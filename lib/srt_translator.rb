@@ -21,7 +21,7 @@ module SrtTranslator
 			translated_frames = Translator.new(frames).translate
 			file = FrameWriter.new(translated_frames, file_path)
 
-			STDOUT.puts "Finished to translate #{file_path}"
+			STDOUT.puts "Finished translating #{file_path}"
 		end
 
 	# end
