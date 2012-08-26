@@ -5,7 +5,7 @@ module SrtTranslator
 
 
 		def initialize file
-			@file = file 
+			@file = Pathname.new(file)
 			@frames = []
 		end
 

@@ -1,4 +1,3 @@
-require 'srt_translator'
 require 'microsoft_translator'
 
 
@@ -17,13 +16,13 @@ module SrtTranslator
 		def translate
 			translator = MicrosoftTranslator::Client.new(@client_id, @client_secret)
 
-			@frames.map! do |frame|
+			@frames.each do |frame|
 				frame.dialog.map! do |dialog_line|
 					translator.translate(dialog_line, @from_lang, @to_lang, "text/plain")
 				end
 			end
 
-			@frames	
+			@frames
 		end
 
 	end

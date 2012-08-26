@@ -14,7 +14,7 @@ module SrtTranslator
 				@frames.each do |frame|
 					file.write(frame.no + "\n")
 					file.write(frame.timing + "\n")
-					file.dialog.each {|line| file.write(line + "\n")}
+					frame.dialog.each {|line| file.write(line + "\n")}
 					file.write "\n"
 				end
 			end
@@ -25,7 +25,7 @@ module SrtTranslator
 
 			path = Pathname.new(file_path)
 			file_base_path = path.dirname + path.basename(path.extname)
-			file_name = "#{file_base_path}.#{to_lang}.#{path.extname}"
+			file_name = "#{file_base_path}.#{to_lang}#{path.extname}"
 		end
 
 	end
