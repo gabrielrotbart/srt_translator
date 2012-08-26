@@ -1,17 +1,21 @@
+$KCODE = "UTF-8"
 require 'spec_helper'
 
 
 describe SrtTranslator::Translator do
 
+	before :each do
+		@frame = mock(SrtTranslator::Frame)
+		@frame.should_receive(:dialog).and_return(['Just tacky enough','good'])
+	end
+
 	it 'should return a translated line' do
 
-		output_lang = 'he'
+		frames = [@frame]
 
-		line = 'Just tacky enough'
+		translation = SrtTranslator::Translator.new(frames).translate
 
-		translation = subject.translate_line line
-
-		translation.first.should == 'קיפסמ ישטיק קר'
+		translation.first.should == ['רק קיטשי מספיק','טוב']
 		
 	end
 
