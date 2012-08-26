@@ -14,7 +14,7 @@ module SrtTranslator
 				@frames.each do |frame|
 					file.write(frame.no + "\n")
 					file.write(frame.timing + "\n")
-					frame.dialog.each {|line| file.write(line + "\n")}
+					frame.dialog.each {|line| file.write(line.reverse + "\n")}
 					file.write "\n"
 				end
 			end

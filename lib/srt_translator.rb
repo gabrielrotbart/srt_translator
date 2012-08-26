@@ -1,7 +1,8 @@
 #!/usr/bin/env ruby
+$:.unshift File.dirname(__FILE__) 
 require 'rubygems'
-require 'srt_translator/configuration'
 require 'srt_translator/translator'
+require 'srt_translator/configuration'
 require 'srt_translator/frame_reader'
 require 'srt_translator/frame_writer'
 
