@@ -25,4 +25,4 @@ module SrtTranslator
 
 end
 
-SrtTranslator.new(ARGV[0])
+# SrtTranslator.new(ARGV[0]).translate
