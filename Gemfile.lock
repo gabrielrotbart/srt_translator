@@ -1,6 +1,6 @@
 GIT
   remote: git@github.com:GabrielRotbart/microsoft_translator.git
-  revision: 7be118f584688ea477a7629f59da3a308fd4d57a
+  revision: 66b1165fe873a7ddf9114f4be10458afa757cd07
   specs:
     microsoft_translator (0.1.1)
       nokogiri (>= 1.4.0)

@@ -18,8 +18,14 @@ module SrtTranslator
 
 			@frames.each do |frame|
 				frame.dialog.map! do |dialog_line|
-					translator.translate(dialog_line, @from_lang, @to_lang, "text/plain")
+					begin
+						translator.translate(dialog_line, @from_lang, @to_lang, "text/plain")
+					rescue
+						puts dialog_line
+						dialog_line
+					end
 				end
+				puts '.'
 			end
 
 			@frames
