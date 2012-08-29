@@ -1,4 +1,4 @@
-#!/usr/bin/env ruby
+
 $:.unshift File.dirname(__FILE__) 
 require 'rubygems'
 require 'srt_translator/translator'
@@ -28,4 +28,3 @@ module SrtTranslator
 
 end
 
-SrtTranslator.translate(ARGV[0])

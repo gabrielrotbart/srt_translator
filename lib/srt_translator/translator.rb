@@ -16,8 +16,9 @@ module SrtTranslator
 		def translate
 			translator = MicrosoftTranslator::Client.new(@client_id, @client_secret)
 
-			@frames.each do |frame|
+			@frames.map! do |frame|
 				frame.dialog.map! do |dialog_line|
+					puts '.'
 					begin
 						translator.translate(dialog_line, @from_lang, @to_lang, "text/plain")
 					rescue
@@ -25,7 +26,6 @@ module SrtTranslator
 						dialog_line
 					end
 				end
-				puts '.'
 			end
 
 			@frames

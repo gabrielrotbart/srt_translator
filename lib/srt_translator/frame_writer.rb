@@ -21,6 +21,7 @@ module SrtTranslator
 		end
 
 		def file_name file_path
+
 			to_lang = Configuration.to_lang
 
 			path = Pathname.new(file_path)

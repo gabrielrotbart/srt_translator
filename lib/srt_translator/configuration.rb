@@ -1,7 +1,7 @@
 module SrtTranslator
 	module Configuration
 
-		attr_accessor :client_id, :client_sercret
+		attr_accessor :client_id, :client_sercret, :to_lang, :from_lang
 
 		def self.client_id
 			'rotsrt'

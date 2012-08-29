@@ -11,6 +11,7 @@ describe SrtTranslator::FrameReader do
 		"
 
 		@file_mock = mock(File)
+		Pathname.stub(:new).and_return(@file_mock)
 		@file_mock.should_receive(:open).and_yield(frame_to_read)
 	end
 
