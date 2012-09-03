@@ -1,28 +1,28 @@
 # encoding: utf-8
 
 require 'spec_helper'
-require 'fakefs/safe'
-require 'fakefs/spec_helpers'
 
 describe SrtTranslator::FrameWriter do
-	include FakeFS::SpecHelpers
+	before :each do
+		frame = SrtTranslator::Frame.new("580", "00:39:52,725 --> 00:39:54,018", ['?רק קיטשי מספיק','טוב -'])
+		@frames = []
+		@frames << frame << frame
+	end
 
 	it 'should create a file from translated frames' do
-		frame_mock = mock('Frame') 
-		frame_mock.should_receive(:no).and_return('111')
-		frame_mock.should_receive(:timing).and_return('4:20:00')
-		frame_mock.should_receive(:dialog).and_return('[-הגשם בספרד.],[נופל בעיקר במישור?]')
+		testStream = StringIO.new
+		SrtTranslator::FrameWriter.new(@frames, "some/path", testStream).write_frames
+		testStream.string.should == "580
+00:39:52,725 --> 00:39:54,018
+?רק קיטשי מספיק
+טוב -
 
-		
+580
+00:39:52,725 --> 00:39:54,018
+?רק קיטשי מספיק
+טוב -
 
-		frames = [frame_mock]
-		
-
-		FakeFS.activate!
-			file_path = 'some/path/test.srt'
-  			SrtTranslator::FrameWriter.new(frames,file_path).create_file
-		FakeFS.deactivate!
-
+"
 	end
 	
 	

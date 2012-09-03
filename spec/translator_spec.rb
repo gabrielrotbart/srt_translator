@@ -7,8 +7,7 @@ require 'spec_helper'
 describe SrtTranslator::Translator do
 
 	before :each do
-		@frame = mock(SrtTranslator::Frame)
-		@frame.should_receive(:dialog).and_return(['Just tacky enough?','good'])
+		@frame = SrtTranslator::Frame.new("580", "00:39:52,725 --> 00:39:54,018", ['Just tacky enough?','good'])
 	end
 
 	it 'should return a translated line' do

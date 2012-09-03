@@ -1,24 +1,32 @@
 require 'pathname'
 
 module SrtTranslator
+
 	class FrameWriter
 
-		def initialize translated_frames, file_path
+		def initialize(translated_frames, file_path, stream = nil)
 			@file_path = file_path
 			@frames = translated_frames
-			create_file
-		end
-
-		def create_file
-			File.open(file_name(@file_path), 'w') do |file|
-				@frames.each do |frame|
-					file.write(frame.no + "\n")
-					file.write(frame.timing + "\n")
-					frame.dialog.each {|line| file.write(line + "\n")}
-					file.write "\n"
-				end
+			@file = stream
+			if @file.nil?
+				@file = File.open(file_name(@file_path), 'w')
 			end
 		end
+
+		def write_frames
+			begin
+				@frames.each do |frame|
+					@file.write(frame.no + "\n")
+					@file.write(frame.timing + "\n")
+					frame.dialog.each {|line| @file.write(line + "\n")}
+					@file.write "\n"
+				end
+			rescue
+				@file.close() unless @file.nil?
+			end
+		end
+
+		protected 
 
 		def file_name file_path
 
