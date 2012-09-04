@@ -9,7 +9,7 @@ module SrtTranslator
 			@frames = translated_frames
 			@file = stream
 			if stream.nil?
-				@file = File.new(file_name(@file_path), 'w')
+				@file = File.new(file_name(@file_path), 'w:UTF-8')
 			end
 		end
 
