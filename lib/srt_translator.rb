@@ -19,7 +19,7 @@ module SrtTranslator
 
 			frames = FrameReader.new(file_path).read_frames
 			translated_frames = Translator.new(frames).translate
-			file = FrameWriter.new(translated_frames, file_path)
+			FrameWriter.new(translated_frames, file_path).write_frames
 
 			STDOUT.puts "Finished translating #{file_path}"
 		end

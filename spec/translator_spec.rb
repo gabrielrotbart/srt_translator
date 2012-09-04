@@ -7,7 +7,7 @@ require 'spec_helper'
 describe SrtTranslator::Translator do
 
 	before :each do
-		@frame = SrtTranslator::Frame.new("580", "00:39:52,725 --> 00:39:54,018", ['Just tacky enough?','good'])
+		@frame = SrtTranslator::Frame.new("580", "00:39:52,725 --> 00:39:54,018", ['Just tacky enough?','-good!', 'continue...', '<i>italics</i>'])
 	end
 
 	it 'should return a translated line' do
@@ -16,7 +16,7 @@ describe SrtTranslator::Translator do
 
 		translation = SrtTranslator::Translator.new(frames).translate
 
-		translation.first.should == ['רק קיטשי מספיק?','טוב']
+		translation.first.dialog.should == ['?רק קיטשי מספיק','!טוב-',"...המשך","<i>נטוי</i>"]
 		
 	end
 

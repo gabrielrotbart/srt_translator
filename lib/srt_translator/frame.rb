@@ -2,6 +2,7 @@ module SrtTranslator
 	class Frame
 
 		attr_reader :no, :timing, :dialog
+		attr_writer :dialog
 
 		def initialize(frame_no, frame_timing, dialog)
 			@no = frame_no

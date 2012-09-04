@@ -4,12 +4,12 @@ module SrtTranslator
 
 	class FrameWriter
 
-		def initialize(translated_frames, file_path, stream = nil)
+		def initialize(translated_frames, file_path, stream=nil)
 			@file_path = file_path
 			@frames = translated_frames
 			@file = stream
-			if @file.nil?
-				@file = File.open(file_name(@file_path), 'w')
+			if stream.nil?
+				@file = File.new(file_name(@file_path), 'w')
 			end
 		end
 
@@ -21,7 +21,7 @@ module SrtTranslator
 					frame.dialog.each {|line| @file.write(line + "\n")}
 					@file.write "\n"
 				end
-			rescue
+			ensure
 				@file.close() unless @file.nil?
 			end
 		end
