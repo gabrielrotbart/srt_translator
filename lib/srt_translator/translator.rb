@@ -1,4 +1,4 @@
-require 'microsoft_translator'
+require 'to_lang'
 
 
 module SrtTranslator
@@ -14,13 +14,14 @@ module SrtTranslator
 		end
 
 		def translate
-			translator = MicrosoftTranslator::Client.new(@client_id, @client_secret)
+			ToLang.start('AIzaSyDkQu1h0eRUd3--hdsbogrrN-Wt2vyz7SI')
+			# translator = MicrosoftTranslator::Client.new(@client_id, @client_secret)
 
 			@frames.map! do |frame|
 				frame.dialog = frame.dialog.map! do |dialog_line|
 					puts '.'
 					begin
-						translated = translator.translate(dialog_line, @from_lang, @to_lang, "text/plain")
+						translated = dialog_line.to_hebrew
 						reversed = reverse_punctuation(translated)
 						reversed
 					rescue

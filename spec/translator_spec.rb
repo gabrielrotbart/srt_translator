@@ -16,7 +16,7 @@ describe SrtTranslator::Translator do
 
 		translation = SrtTranslator::Translator.new(frames).translate
 
-		translation.first.dialog.should == ['?רק קיטשי מספיק','!טוב-',"...המשך","<i>נטוי</i>"]
+		translation.first.dialog.should == ["?פשוט זול מספיק", "!טוב-", "...תמשיך ", "<i>אותיות מוטות</i>"]
 		
 	end
 
